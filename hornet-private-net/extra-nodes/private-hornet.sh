@@ -168,7 +168,7 @@ bootstrapFiles () {
   sed -i 's/0.0.0.0:'$DEFAULT_PEERING_PORT'/0.0.0.0:'$peering_port'/g' docker-compose.yml
   sed -i 's/0.0.0.0:'$DEFAULT_DASHBOARD_PORT'/0.0.0.0:'$dashboard_port'/g' docker-compose.yml
 
-  cp ../../config/config-node.json ./config/config.json
+  cp ../../config-node.json ./config/config.json
   sed -i 's/node1/'$node_name'/g' ./config/config.json
 
   cp ../../../config/profiles.json ./config/profiles.json
