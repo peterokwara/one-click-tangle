@@ -122,7 +122,7 @@
         "reconnectInterval": "30s",
         "autopeering": {
             "bindAddress": "0.0.0.0:14626",
-            "runAsEntryNode": false,
+            "runAsEntryNode": true,
             "dirPath": "./p2pstore/node"
         }
     },
