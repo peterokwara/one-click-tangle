@@ -25,10 +25,7 @@
             "/api/v1/addresses/ed25519/:address/outputs",
             "/api/v1/treasury"
         ],
-        "whitelistedAddresses": [
-            "127.0.0.1",
-            "::1"
-        ],
+        "whitelistedAddresses": ["127.0.0.1", "::1"],
         "bindAddress": "0.0.0.0:14265",
         "powEnabled": true,
         "powWorkerCount": 1,
@@ -107,19 +104,12 @@
             "Prometheus",
             "Spammer",
             "Coordinator",
-            "Autopeering",
             "ZMQ"
         ],
-        "enablePlugins": [
-            "URTS",
-            "RestAPI",
-            "MQTT"
-        ]
+        "enablePlugins": ["URTS", "RestAPI", "MQTT", "Autopeering"]
     },
     "p2p": {
-        "bindMultiAddresses": [
-            "/ip4/0.0.0.0/tcp/15600"
-        ],
+        "bindMultiAddresses": ["/ip4/0.0.0.0/tcp/15600"],
         "connectionManager": {
             "highWatermark": 10,
             "lowWatermark": 5
@@ -129,7 +119,12 @@
         "peerStore": {
             "path": "./p2pstore/node"
         },
-        "reconnectInterval": "30s"
+        "reconnectInterval": "30s",
+        "autopeering": {
+            "bindAddress": "0.0.0.0:14626",
+            "runAsEntryNode": false,
+            "dirPath": "./p2pstore/node"
+        }
     },
     "p2pdisc": {
         "advertiseInterval": "30s",
@@ -141,9 +136,7 @@
         "level": "info",
         "disableCaller": true,
         "encoding": "console",
-        "outputPaths": [
-            "stdout"
-        ]
+        "outputPaths": ["stdout"]
     },
     "mqtt": {
         "bindAddress": "0.0.0.0:1883"

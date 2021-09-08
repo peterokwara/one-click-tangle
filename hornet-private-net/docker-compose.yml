@@ -11,7 +11,7 @@ services:
     # network_mode: host
     networks:
       - tangle
-    image: gohornet/hornet:1.0.3
+    image: gohornet/hornet:1.0.4
     restart: unless-stopped
     container_name: coo
     environment:
@@ -28,13 +28,13 @@ services:
       - ./snapshots:/app/snapshots
     cap_drop:
       - ALL
-  
+
   node:
     hostname: node1
     # network_mode: host
     networks:
       - tangle
-    image: gohornet/hornet:1.0.3
+    image: gohornet/hornet:1.0.4
     restart: unless-stopped
     container_name: node1
     expose:
@@ -42,10 +42,12 @@ services:
       - 8081
       - 1883
       - 15600
+      - 14626
     ports:
       - "0.0.0.0:14265:14265"
       - "0.0.0.0:8081:8081"
       - "0.0.0.0:15600:15600"
+      - "0.0.0.0:14626:14626"
     volumes:
       - ./config/config-node.json:/app/config.json:ro
       - ./config/profiles.json:/app/profiles.json
@@ -54,14 +56,14 @@ services:
       - ./p2pstore:/app/p2pstore
       - ./snapshots:/app/snapshots
     cap_drop:
-        - ALL
-  
+      - ALL
+
   spammer:
     hostname: spammer
     # network_mode: host
     networks:
       - tangle
-    image: gohornet/hornet:1.0.3
+    image: gohornet/hornet:1.0.4
     restart: unless-stopped
     container_name: spammer
     expose:
@@ -75,4 +77,4 @@ services:
       - ./p2pstore:/app/p2pstore
       - ./snapshots:/app/snapshots
     cap_drop:
-        - ALL
+      - ALL

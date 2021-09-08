@@ -73,16 +73,16 @@ else
   fi
 fi
 
-if [ -n "$4" ]; then
-  peer_address="$4"
-else 
-  if [ -f ../node1.identity.txt ]; then
-    peer_address="/dns/node1/tcp/15600/p2p/$(getPeerID ../node1.identity.txt)"
-  else
-    echo "Please provide a peering address"
-    exit 132
-  fi
-fi
+# if [ -n "$4" ]; then
+#   peer_address="$4"
+# else 
+#   if [ -f ../node1.identity.txt ]; then
+#     peer_address="/dns/node1/tcp/15600/p2p/$(getPeerID ../node1.identity.txt)"
+#   else
+#     echo "Please provide a peering address"
+#     exit 132
+#   fi
+# fi
 
 if [ -n "$5" ]; then
   snapshot_file="$5"
@@ -168,7 +168,7 @@ bootstrapFiles () {
   sed -i 's/0.0.0.0:'$DEFAULT_PEERING_PORT'/0.0.0.0:'$peering_port'/g' docker-compose.yml
   sed -i 's/0.0.0.0:'$DEFAULT_DASHBOARD_PORT'/0.0.0.0:'$dashboard_port'/g' docker-compose.yml
 
-  cp ../../../config/config-node.json ./config/config.json
+  cp ../../config/config-node.json ./config/config.json
   sed -i 's/node1/'$node_name'/g' ./config/config.json
 
   cp ../../../config/profiles.json ./config/profiles.json
@@ -200,7 +200,7 @@ installNode () {
   setupIdentity
 
   # Peering of the nodes is configured
-  setupPeering
+  #setupPeering
 
   # Coordinator set up
   setupCoordinator
